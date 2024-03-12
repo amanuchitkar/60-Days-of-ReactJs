@@ -8,7 +8,7 @@ function App() {
     <>
     <Navbar title="TextUtils" aboutText="About TextUtils"/>
     {/* <Navbar/> */}
-    <Textarea heading=""/>
+    <Textarea heading="Welcome"/>
     </>
   );
 }

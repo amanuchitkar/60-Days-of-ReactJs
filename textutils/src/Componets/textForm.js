@@ -1,14 +1,24 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
-export default function TextForm() {
+export default function TextForm(props) {
   return (
     <div>
-      <div class="mb-3 container">
-        <label for="mytext" class="form-label">
+      <div className="container mt-4">
+        <h2>{props.heading}</h2>
+        <label htmlFor="mytext" className="form-label">
           Example textarea
         </label>
-        <textarea class="form-control" id="mytext" rows="3"></textarea>
+        <textarea className="form-control" id="mytext" rows="3"></textarea>
+        <button className="btn btn-primary mt-3">Convert upper case</button>
       </div>
+
     </div>
   );
+}
+TextForm.propTypes={
+  heading:PropTypes.string.isRequired
+}
+TextForm.defaultProps={
+  heading:"enter value"
 }
