@@ -1,5 +1,7 @@
-import React from "react";
+import React, {usestate} from "react";
 import PropTypes from 'prop-types';
+
+const [text,settext]=usestate("Enter your text here.")
 
 export default function TextForm(props) {
   return (
