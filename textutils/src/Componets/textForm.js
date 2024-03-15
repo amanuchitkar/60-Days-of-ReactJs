@@ -34,4 +34,5 @@ TextForm.propTypes={
 }
 TextForm.defaultProps={
   heading:"enter value"
+  
 }
