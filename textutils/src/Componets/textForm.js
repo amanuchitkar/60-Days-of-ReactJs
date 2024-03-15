@@ -16,6 +16,7 @@ export default function TextForm(props) {
   const [text,setText]=useState("");
   // setText("kfdljsajf");
   return (
+    <>
     <div>
       <div className="container mt-4">
         <h2>{props.heading}</h2>
@@ -27,6 +28,10 @@ export default function TextForm(props) {
       </div>
 
     </div>
+    <div className="container">
+      <h1>Your text summary</h1>
+    </div>
+    </>
   );
 }
 TextForm.propTypes={
@@ -34,5 +39,4 @@ TextForm.propTypes={
 }
 TextForm.defaultProps={
   heading:"enter value"
-  
 }
