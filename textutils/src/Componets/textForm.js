@@ -15,15 +15,15 @@ export default function TextForm(props) {
     let email = text.split("@");
     setText(email[0]);
   };
- const dowtext=()=>{
-    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-    const link = document.createElement('a');
+  const dowtext = () => {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = "down.txt";
     link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 0);
   };
-  
+
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
