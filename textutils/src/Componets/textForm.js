@@ -44,6 +44,7 @@ export default function TextForm(props) {
             value={text}
             onChange={handleOnChange}
             rows="3"
+            style={{backgroundColor:props.mode==='dark'?'black':'white'}}
           ></textarea>
           <button className="btn btn-primary m-3" onClick={handleupclick}>
             Convert upper case
