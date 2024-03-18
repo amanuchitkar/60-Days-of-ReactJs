@@ -40,11 +40,11 @@ export default function TextForm(props) {
           </label>
           <textarea
             className="form-control"
-            id="mytext"
             value={text}
             onChange={handleOnChange}
+            style={props.colors}
+            id="mytext"
             rows="3"
-            style={{backgroundColor:props.mode==='dark'?'black':'white'}}
           ></textarea>
           <button className="btn btn-primary m-3" onClick={handleupclick}>
             Convert upper case
