@@ -33,17 +33,17 @@ export default function TextForm(props) {
   return (
     <>
       <div>
-        <div className="container mt-4">
+        <div className="container mt-4" style={{color:props.mode==="dark" ? "white":"black"}}>
           <h2>{props.heading}</h2>
           <label htmlFor="mytext" className="form-label">
             Example textarea
           </label>
           <textarea
-            className="form-control"
+            className={`form-control bg-${props.mode}`}
             value={text}
             onChange={handleOnChange}
-            style={props.colors}
             id="mytext"
+            style={{color:props.mode==="dark" ? "white":"black"}}
             rows="3"
           ></textarea>
           <button className="btn btn-primary m-3" onClick={handleupclick}>
@@ -60,7 +60,7 @@ export default function TextForm(props) {
           </button>
         </div>
       </div>
-      <div className="container">
+      <div className="container" style={{color:props.mode==="dark" ? "white":"black"}}>
         <h1>Your text summary</h1>
         <p>
           {text.split(" ").length} words and {text.length} Charachter
