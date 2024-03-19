@@ -2,18 +2,23 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 export default function TextForm(props) {
+  const [text, setText] = useState("");
   const handleupclick = () => {
     // console.log("hello button clicked"+text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Convert text to Upper case successfully","success")
   };
   const handlelowclick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Convert text to lower case successfully","success")
   };
   const emailextrac = () => {
     let email = text.split("@");
     setText(email[0]);
+    props.showAlert("Extract Email successfully","success")
+    props.showAlert("Extract Email successfully","success")
   };
   const dowtext = () => {
     const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
@@ -28,7 +33,6 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
-  const [text, setText] = useState("");
   // setText("kfdljsajf");
   return (
     <>
@@ -67,7 +71,7 @@ export default function TextForm(props) {
         </p>
         <p>{0.008 * text.split(" ").length} minutes read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Enter Somting to Preview it"}</p>
       </div>
     </>
   );
