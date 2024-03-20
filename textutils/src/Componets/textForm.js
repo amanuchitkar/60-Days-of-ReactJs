@@ -13,7 +13,7 @@ export default function TextForm(props) {
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Convert text to lower case successfully","success")
-  };
+  }; 
   const emailextrac = () => {
     let email = text.split("@");
     setText(email[0]);
