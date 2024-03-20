@@ -50,16 +50,16 @@ export default function TextForm(props) {
             style={{color:props.mode==="dark" ? "white":"black"}}
             rows="3"
           ></textarea>
-          <button className="btn btn-primary m-3" onClick={handleupclick}>
+          <button className="btn btn-primary  m-3 " style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={handleupclick}>
             Convert upper case
           </button>
-          <button className="btn btn-primary m-3" onClick={handlelowclick}>
+          <button className="btn btn-primary m-3" style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={handlelowclick}>
             Convert lower case
           </button>
-          <button className="btn btn-primary m-3" onClick={emailextrac}>
+          <button className="btn btn-primary m-3" style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={emailextrac}>
             email extractor
           </button>
-          <button className="btn btn-primary m-3" onClick={dowtext}>
+          <button className="btn btn-primary m-3" style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={dowtext}>
             Download text
           </button>
         </div>
