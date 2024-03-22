@@ -25,11 +25,13 @@ function App() {
     setMode("dark")
     document.body.style.backgroundColor="#1a1d1f"
     showAlert("Drak mode Enable succesfully","success")
+    document.title="TextUtils-DarkMode"
   }
   else if(mode==="dark"){
     setMode("light")
     document.body.style.backgroundColor="white"
     showAlert("Light mode Enable succesfully","success")
+    document.title="TextUtils-LightMode"
     }
     else{
       console.log("error")
