@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export default function Navbar(props) {
   return (
@@ -30,18 +30,8 @@ export default function Navbar(props) {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <a className="nav-link" href="/about">
                   {props.aboutText}
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/">
-                  Pricing
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true" href="/">
-                  Disabled
                 </a>
               </li>
             </ul>
@@ -63,12 +53,12 @@ export default function Navbar(props) {
     </div>
   );
 }
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  aboutText: PropTypes.string.isRequired,
-};
+// Navbar.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   aboutText: PropTypes.string.isRequired,
+// };
 
-Navbar.defaultProps = {
-  title: "set title Here",
-  aboutText: "set about here",
-};
+// Navbar.defaultProps = {
+//   title: "set title Here",
+//   aboutText: "set about here",
+// };
