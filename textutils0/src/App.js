@@ -6,7 +6,7 @@ import Textarea from "./Componets/textForm";
 import About from "./Componets/about";
 import Alert from "./Componets/Alert";
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // let name = "aman";
 function App() {
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar
           title="TextUtils"
           aboutText="About"
@@ -50,12 +50,11 @@ function App() {
         
         
   
-        <BrowserRouter>
       <Routes>
         <Route index element={<Textarea mode={mode}/>} />
         <Route path="/about" element={<About/>} />
       </Routes>
-    </BrowserRouter>
+    </Router>
     </>
   );
 }
