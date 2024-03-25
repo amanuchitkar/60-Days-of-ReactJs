@@ -12,7 +12,7 @@ export default function Navbar(props) {
           <Link className="navbar-brand" to="/">
             {props.title}
           </Link>
-          
+
           <button
             className="navbar-toggler"
             type="button"
@@ -37,7 +37,6 @@ export default function Navbar(props) {
                 </Link>
               </li>
             </ul>
-            </div>
             <div className="form-check form-switch">
               <input
                 className="form-check-input"
@@ -46,9 +45,15 @@ export default function Navbar(props) {
                 id="flexSwitchCheckDefault"
                 onClick={props.togglemode}
               />
-              <label className={`form-check-label text-${props.mode==="light"?"dark":"light"}` }htmlFor="flexSwitchCheckDefault">
-               {props.mode==="light"?"Enable":"Disable"} Dark Mode
+              <label
+                className={`form-check-label text-${
+                  props.mode === "light" ? "dark" : "light"
+                }`}
+                htmlFor="flexSwitchCheckDefault"
+              >
+                {props.mode === "light" ? "Enable" : "Disable"} Dark Mode
               </label>
+            </div>
           </div>
         </div>
       </nav>

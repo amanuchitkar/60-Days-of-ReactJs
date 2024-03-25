@@ -18,7 +18,6 @@ export default function TextForm(props) {
     let email = text.split("@");
     setText(email[0]);
     props.showAlert("Extract Email successfully","success")
-    props.showAlert("Extract Email successfully","success")
   };
   const dowtext = () => {
     const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
@@ -27,6 +26,7 @@ export default function TextForm(props) {
     link.download = "down.txt";
     link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 0);
+    props.showAlert("Extract Email successfully","success")
   };
 
   const handleOnChange = (event) => {
@@ -67,7 +67,7 @@ export default function TextForm(props) {
       <div className="container" style={{color:props.mode==="dark" ? "white":"black"}}>
         <h1>Your text summary</h1>
         <p>
-          {text.split(" ").length} words and {text.length} Charachter
+          {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} Charachter
         </p>
         <p>{0.008 * text.split(" ").length} minutes read</p>
         <h2>Preview</h2>

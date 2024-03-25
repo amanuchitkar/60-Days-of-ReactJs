@@ -51,8 +51,8 @@ function App() {
         
   
       <Routes>
-        <Route index element={<Textarea mode={mode}/>} />
-        <Route path="/about" element={<About/>} />
+        <Route index element={<Textarea heading="Enter value" mode={mode} showAlert={showAlert}/>} />
+        <Route path="/about" element={<About mode={mode}/>} />
       </Routes>
     </Router>
     </>
