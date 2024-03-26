@@ -35,8 +35,15 @@ export default function TextForm(props) {
   const clearAll=()=>{
     setText("")
     props.showAlert("Clear all text successfully","success")
-
+    
   };
+  const copyAll=()=>{
+    var text=document.getElementById("mybox")
+    text.select();
+    text.setSelectionRange(0,9999);
+    navigator.clipboard.writeText(text.value)
+    props.showAlert("copy all text successfully","success")
+  }
   
   // setText("kfdljsajf");
   return (
@@ -44,14 +51,14 @@ export default function TextForm(props) {
       <div>
         <div className="container mt-4" style={{color:props.mode==="dark" ? "white":"black"}}>
           <h2>{props.heading}</h2>
-          <label htmlFor="mytext" className="form-label">
+          <label htmlFor="mybox" className="form-label">
             Example textarea
           </label>
           <textarea
             className={`form-control bg-${props.mode}`}
             value={text}
             onChange={handleOnChange}
-            id="mytext"
+            id="mybox"
             style={{color:props.mode==="dark" ? "white":"black"}}
             rows="3"
           ></textarea>
@@ -69,6 +76,9 @@ export default function TextForm(props) {
           </button>
           <button className="btn btn-primary m-3" disabled={text.length===0} style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={clearAll}>
             Clear All text
+          </button>
+          <button className="btn btn-primary m-3" disabled={text.length===0} style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={copyAll}>
+            copy All text
           </button>
         </div>
       </div>
