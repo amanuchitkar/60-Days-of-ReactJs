@@ -32,7 +32,12 @@ export default function TextForm(props) {
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
+  const clearAll=()=>{
+    setText("")
+    props.showAlert("Clear all text successfully","success")
 
+  };
+  
   // setText("kfdljsajf");
   return (
     <>
@@ -50,17 +55,20 @@ export default function TextForm(props) {
             style={{color:props.mode==="dark" ? "white":"black"}}
             rows="3"
           ></textarea>
-          <button className="btn btn-primary  m-3 " style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={handleupclick}>
+          <button className="btn btn-primary  m-3 " disabled={text.length===0}style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={handleupclick}>
             Convert upper case
           </button>
-          <button className="btn btn-primary m-3" style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={handlelowclick}>
+          <button className="btn btn-primary m-3" disabled={text.length===0} style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={handlelowclick}>
             Convert lower case
           </button>
-          <button className="btn btn-primary m-3" style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={emailextrac}>
+          <button className="btn btn-primary m-3" disabled={text.length===0} style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={emailextrac}>
             email extractor
           </button>
-          <button className="btn btn-primary m-3" style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={dowtext}>
+          <button className="btn btn-primary m-3" disabled={text.length===0} style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={dowtext}>
             Download text
+          </button>
+          <button className="btn btn-primary m-3" disabled={text.length===0} style={{backgroundColor:props.mode==="dark"?"#353a3f":"#dfdfdf",border:"1px solid black",color:props.mode==="light"?"#353a3f":"#dfdfdf"}} onClick={clearAll}>
+            Clear All text
           </button>
         </div>
       </div>
@@ -69,7 +77,7 @@ export default function TextForm(props) {
         <p>
           {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} Charachter
         </p>
-        <p>{0.008 * text.split(" ").length} minutes read</p>
+        <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes read</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Enter Somting to Preview it"}</p>
       </div>
