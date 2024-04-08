@@ -6,7 +6,7 @@ export default function About(props) {
   backgroundColor:props.mode==="dark"?"#262b2d":"#dfdfdf"
  }
 
-  return (
+  return ( 
     <div>
       <>
         <div className="container" style={{color:props.mode==="light"?"black":"white"}}>
