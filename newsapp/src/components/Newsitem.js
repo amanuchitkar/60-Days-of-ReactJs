@@ -10,7 +10,7 @@ constructor(){
     return (
       <div className="my-3">
         <div  className="card" style={{width: "25rem"}}>
-          <img src={imgUrl}  className="card-img-top" alt="..." /> 
+          <img src={imgUrl}  className="card-img-top" alt="Check your internet connection" /> 
           <div  className="card-body">
             <h5  className="card-title">{title}</h5>
             <p  className="card-text">
