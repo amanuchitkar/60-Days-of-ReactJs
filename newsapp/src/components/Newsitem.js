@@ -6,7 +6,7 @@ constructor(){
   console.log("Hello im a constroctor")
 };
   render() {
-    let {title, description,imgUrl}=this.props;
+    let {title, description,imgUrl}=this.props; 
     return (
       <div className="my-3">
         <div  className="card" style={{width: "25rem"}}>
