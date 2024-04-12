@@ -5,6 +5,7 @@ constructor(){
   super();
   console.log("Hello im a constroctor")
 };
+
   render() {
     let {title, description,imgUrl}=this.props; 
     return (
