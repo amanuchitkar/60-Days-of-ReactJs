@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Newsitem from "./Newsitem";
+import Loader from "./Loaderf.js";
 
 export class News extends Component {
   constructor() {
@@ -21,7 +22,7 @@ export class News extends Component {
     });
   }
   handlePreviousClick = async () => {
-    console.log("previus");
+    this.setState({ loading: true });
     let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
       this.state.page - 1
     }&pageSize=${this.state.pagesize}`;
@@ -30,30 +31,28 @@ export class News extends Component {
     this.setState({
       page: this.state.page - 1,
       articles: parseData.articles,
+      loading: false,
     });
   };
   handleNextClick = async () => {
-    console.log("Next");
-    if (
-      this.state.page + 1 >Math.ceil(this.state.totalResults / this.state.pagesize)
-    ) {
-    } else {
-      let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
-        this.state.page + 1
-      }&pageSize=${this.state.pagesize}`;
-      let data = await fetch(url);
-      let parseData = await data.json();
-      this.setState({
-        page: this.state.page + 1,
-        articles: parseData.articles,
-      });
-    }
+    this.setState({ loading: true });
+    let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
+      this.state.page + 1
+    }&pageSize=${this.state.pagesize}`;
+    let data = await fetch(url);
+    let parseData = await data.json();
+    this.setState({
+      page: this.state.page + 1,
+      articles: parseData.articles,
+      loading: false,
+    });
   };
   render() {
     return (
       <div className="container my-3 text-center">
         <h2>News - Top Headlines</h2>
         <h6>Page: {this.state.page}</h6>
+        {this.state.loading && <Loader />}
         <div className="row">
           {this.state.articles.map((element) => {
             return (
@@ -73,7 +72,6 @@ export class News extends Component {
           })}
         </div>
 
-       
         <div className="container my-2 d-flex justify-content-around alin align-items-center">
           <button
             disabled={this.state.page <= 1}
@@ -85,7 +83,10 @@ export class News extends Component {
           </button>
           <h6>Page: {this.state.page}</h6>
           <button
-            disabled={ this.state.page + 1 >Math.ceil(this.state.totalResults / this.state.pagesize)}
+            disabled={
+              this.state.page + 1 >
+              Math.ceil(this.state.totalResults / this.state.pagesize)
+            }
             type="button"
             className="btn btn-lg btn-dark mx-2"
             onClick={this.handleNextClick}
