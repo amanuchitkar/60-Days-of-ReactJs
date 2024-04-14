@@ -13,16 +13,18 @@ export class News extends Component {
     };
   }
   async componentDidMount() {
+    this.setState({loading:true});
     let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${this.state.page}&pageSize=${this.state.pagesize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
       articles: parseData.articles,
       totalResults: parseData.totalResults,
+      loading:false
     });
   }
   handlePreviousClick = async () => {
-    this.setState({ loading: true });
+    this.setState({ loading: true, articles:[] });
     let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
       this.state.page - 1
     }&pageSize=${this.state.pagesize}`;
@@ -35,7 +37,7 @@ export class News extends Component {
     });
   };
   handleNextClick = async () => {
-    this.setState({ loading: true });
+    this.setState({ loading: true,articles:[] });
     let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
       this.state.page + 1
     }&pageSize=${this.state.pagesize}`;
