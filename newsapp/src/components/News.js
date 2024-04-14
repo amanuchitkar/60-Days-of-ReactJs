@@ -36,6 +36,7 @@ export class News extends Component {
       loading: false,
     });
   };
+  
   handleNextClick = async () => {
     this.setState({ loading: true,articles:[] });
     let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
