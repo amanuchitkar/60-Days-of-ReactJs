@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 import Newsitem from "./Newsitem";
 import Loader from "./Loaderf.js";
+import PropTypes from 'prop-types'
+
 
 export class News extends Component {
+  static defaultProps={
+    country:'in',
+    pagesize:18
+  }
+  static propTypes={
+    country:PropTypes.string,
+    pagesize:PropTypes.number,
+  }
   constructor() {
     super();
     this.state = {
@@ -53,7 +63,7 @@ export class News extends Component {
     return (
       <div className="container my-3 ">
         <h2 className="text-center">News - Top Headlines</h2>
-        <h6>Page: {this.state.page}</h6>
+        <h6 className="text-center">Page: {this.state.page}</h6>
         {this.state.loading && <Loader />}
         <div className="row">
           {this.state.articles.map((element) => {
