@@ -9,12 +9,11 @@ export class News extends Component {
       articles: [],
       loading: false,
       page: 1,
-      pagesize: 18,
     };
   }
   async componentDidMount() {
     this.setState({loading:true});
-    let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${this.state.page}&pageSize=${this.state.pagesize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${this.state.page}&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
@@ -25,9 +24,9 @@ export class News extends Component {
   }
   handlePreviousClick = async () => {
     this.setState({ loading: true, articles:[] });
-    let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
       this.state.page - 1
-    }&pageSize=${this.state.pagesize}`;
+    }&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
@@ -39,9 +38,9 @@ export class News extends Component {
   
   handleNextClick = async () => {
     this.setState({ loading: true,articles:[] });
-    let url = `https://newsapi.org/v2/top-headlines?country=IN&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=business&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${
       this.state.page + 1
-    }&pageSize=${this.state.pagesize}`;
+    }&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
@@ -52,8 +51,8 @@ export class News extends Component {
   };
   render() {
     return (
-      <div className="container my-3 text-center">
-        <h2>News - Top Headlines</h2>
+      <div className="container my-3 ">
+        <h2 className="text-center">News - Top Headlines</h2>
         <h6>Page: {this.state.page}</h6>
         {this.state.loading && <Loader />}
         <div className="row">
@@ -88,7 +87,7 @@ export class News extends Component {
           <button
             disabled={
               this.state.page + 1 >
-              Math.ceil(this.state.totalResults / this.state.pagesize)
+              Math.ceil(this.state.totalResults / this.props.pagesize)
             }
             type="button"
             className="btn btn-lg btn-dark mx-2"
