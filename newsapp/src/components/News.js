@@ -81,6 +81,9 @@ export class News extends Component {
                       : "https://img.freepik.com/free-photo/business-concept-glass-world-laptop_1150-17695.jpg?size=626&ext=jpg"
                   }
                   newsUrl={element.url}
+                  auther={element.author}
+                  date={element.publishedAt}
+                  source={element.source.name}
                 />
               </div>
             );
