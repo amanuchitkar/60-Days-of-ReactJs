@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Newsitem from "./Newsitem";
 import Loader from "./Loaderf.js";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+
 
 
 export class News extends Component {
@@ -28,17 +29,21 @@ export class News extends Component {
     document.title=`${this.capitalizeFirstLetter(props.category)} News`
   }
   async updateapi(pageno){
+    this.props.setProgress(20)
     this.setState({loading:true,articles:[] });
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${pageno}&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
+    this.props.setProgress(40)
     let parseData = await data.json();
-  
+    
+    this.props.setProgress(70)
     this.setState({
       page: pageno,
       articles: parseData.articles,
       totalResults: parseData.totalResults,
       loading:false
     });
+    this.props.setProgress(100)
   }
   async componentDidMount() {
    this.updateapi(this.state.page)
