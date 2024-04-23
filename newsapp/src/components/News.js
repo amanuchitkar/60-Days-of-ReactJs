@@ -9,12 +9,13 @@ export class News extends Component {
   static defaultProps={
     country:'in',
     pagesize:18,
-    category:'general'
+    category:'general',
   }
   static propTypes={
     country:PropTypes.string,
     pagesize:PropTypes.number, 
     category:PropTypes.string,
+    apikey:PropTypes.string
   }
   capitalizeFirstLetter = (s) => 
   s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
@@ -30,7 +31,7 @@ export class News extends Component {
   async updateapi(pageno){
     this.props.setProgress(20)
     this.setState({loading:true,articles:[] });
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=36fd84d366b94a1fb6ee775688380a8f&page=${pageno}&pageSize=${this.props.pagesize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}&page=${pageno}&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
     this.props.setProgress(40)
     let parseData = await data.json();

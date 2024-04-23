@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
-  
+  apikey=process.env.REACT_APP_API
   state = {
     progress: 0,
   };
@@ -26,42 +26,42 @@ export default class App extends Component {
               <Route
                 exact
                 path="/"
-                element={<News setProgress={this.setProgress} key="general" category="general" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="general" category="general" />}
               />
               <Route
                 exact
                 path="/general"
-                element={<News setProgress={this.setProgress} key="general" category="general" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="general" category="general" />}
               />
               <Route
                 exact
                 path="/business"
-                element={<News setProgress={this.setProgress} key="business" category="business" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="business" category="business" />}
               />
               <Route
                 exact
                 path="/entertainment"
-                element={<News setProgress={this.setProgress} key="entertainment" category="entertainment" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="entertainment" category="entertainment" />}
               />
               <Route
                 exact
                 path="/health"
-                element={<News setProgress={this.setProgress} key="health" category="health" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="health" category="health" />}
               />
               <Route
                 exact
                 path="/science"
-                element={<News setProgress={this.setProgress} key="science" category="science" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="science" category="science" />}
               />
               <Route
                 exact
                 path="/sports"
-                element={<News setProgress={this.setProgress} key="sports" category="sports" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="sports" category="sports" />}
               />
               <Route
                 exact
                 path="/technology"
-                element={<News setProgress={this.setProgress} key="technology" category="technology" />}
+                element={<News setProgress={this.setProgress} apikey={this.apikey} key="technology" category="technology" />}
               />
             </Routes>
           </div>
