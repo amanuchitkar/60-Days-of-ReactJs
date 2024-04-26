@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Newsitem =(props)=> {
+const Newsitem =(props)=> {
  
     let { title, description, imgUrl, newsUrl, auther, date, source } =
       props;
