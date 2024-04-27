@@ -35,6 +35,7 @@ const News = (props) => {
   useEffect(() => {
     document.title=`${capitalizeFirstLetter(props.category)} News`;
     updateapi();
+    
     // eslint-disable-next-line
   }, []);
   // const handlePreviousClick = async () => {
