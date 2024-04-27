@@ -1,7 +1,8 @@
-body{
+body {
   background-color: #282c34;
   color: white;
 }
+
 .App {
   text-align: center;
 }
@@ -36,6 +37,7 @@ body{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

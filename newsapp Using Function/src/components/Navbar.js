@@ -26,10 +26,7 @@ export default function Navbar() {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/"
-                >
+                <NavLink className="nav-link" to="/">
                   Home
                 </NavLink>
               </li>

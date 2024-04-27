@@ -12,10 +12,9 @@ const News = (props) => {
 
   const capitalizeFirstLetter = (str) => {
     const modStr = str[0].toUpperCase() + str.slice(1);
-      return modStr
-    
+    return modStr;
   };
-  
+
   const updateapi = async () => {
     setArticles([]);
     props.setProgress(20);
@@ -23,16 +22,16 @@ const News = (props) => {
     let data = await fetch(url);
     props.setProgress(40);
     let parseData = await data.json();
-    
+
     props.setProgress(70);
     setArticles(parseData.articles);
     setTotalResults(parseData.totalResults);
     setLoading(false);
-    
+
     props.setProgress(100);
   };
   useEffect(() => {
-    document.title=`${capitalizeFirstLetter(props.category)} News`;
+    document.title = `${capitalizeFirstLetter(props.category)} News`;
     updateapi();
 
     // eslint-disable-next-line
