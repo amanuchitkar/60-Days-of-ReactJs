@@ -6,7 +6,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
 
@@ -16,7 +16,9 @@ const News = (props) => {
   };
 
   const updateapi = async () => {
+    document.title = `${capitalizeFirstLetter(props.category)} News`;
     setArticles([]);
+    setLoading(true);
     props.setProgress(20);
     let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pagesize}`;
     let data = await fetch(url);
@@ -26,12 +28,11 @@ const News = (props) => {
     props.setProgress(70);
     setArticles(parseData.articles);
     setTotalResults(parseData.totalResults);
-    setLoading(false);
 
+    setLoading(false);
     props.setProgress(100);
   };
   useEffect(() => {
-    document.title = `${capitalizeFirstLetter(props.category)} News`;
     updateapi();
 
     // eslint-disable-next-line
@@ -46,11 +47,12 @@ const News = (props) => {
   //   updateapi();
   // };
   const fetchMoreData = async () => {
-    setPage(page + 1);
+    setLoading(true);
     let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pagesize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     setArticles(articles.concat(parseData.articles));
+    setPage(page + 1);
     setTotalResults(parseData.totalResults);
     setLoading(false);
   };
