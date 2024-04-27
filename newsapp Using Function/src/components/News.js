@@ -16,7 +16,6 @@ const News = (props) => {
     
   };
   
-  console.log(capitalizeFirstLetter("aman"));
   const updateapi = async () => {
     setArticles([]);
     props.setProgress(20);
@@ -35,7 +34,7 @@ const News = (props) => {
   useEffect(() => {
     document.title=`${capitalizeFirstLetter(props.category)} News`;
     updateapi();
-    
+
     // eslint-disable-next-line
   }, []);
   // const handlePreviousClick = async () => {
