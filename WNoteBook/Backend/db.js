@@ -1,10 +1,9 @@
-const mongoose=require("mongoose");
-const mongoURI="mongodb://localhost:27017"
+const mongoose = require("mongoose");
+const mongoURI = "mongodb://localhost:27017";
 
 const connectToMongo = async () => {
-        await mongoose.connect(mongoURI, {});
-        console.log("Connected to MongoDB");
-  
+  await mongoose.connect(mongoURI, {});
+  console.log("Connected to MongoDB");
 };
 
-module.exports=connectToMongo
+module.exports = connectToMongo;
