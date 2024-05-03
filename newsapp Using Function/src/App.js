@@ -11,6 +11,7 @@ const App = () => {
   const [progress, setProgress] = useState(0);
   return (
     <>
+    
       <Router>
         <div>
           <Navbar />
