@@ -7,6 +7,7 @@ const Newsitem = (props) => {
       <div className="card m-3">
         <img
           src={imgUrl}
+          
           className="card-img-top card-deck"
           alt="Check your internet connection"
         />
