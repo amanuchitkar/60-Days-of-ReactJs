@@ -7,11 +7,10 @@ const Newsitem = (props) => {
       <div className="card m-3">
         <img
           src={imgUrl}
-          
           className="card-img-top card-deck"
           alt="Check your internet connection"
-          
         />
+
         <div className="card-body text-light bg-dark">
           <span class="badge text-bg-danger">{source}</span>
           <h5 className="card-title">{title} </h5>
