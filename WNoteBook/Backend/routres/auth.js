@@ -4,8 +4,10 @@ const User = require("../models/User");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const fetchuser = require("../middleware/fetchuser");
 const JWT_SECRET = "amnaisgoodboy";
+
+// ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
 router.post(
   "/createuser",
   [
@@ -49,6 +51,7 @@ router.post(
     }
   }
 );
+// ROUTE 2: Authenticate a User using: POST "/api/auth/login". No login required
 router.post(
   "/login",
   [
@@ -65,11 +68,15 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        return res.status(400).json({ error: "Please enter valid credentials" });
+        return res
+          .status(400)
+          .json({ error: "Please enter valid credentials" });
       }
       const passwordComapre = await bcrypt.compare(password, user.password);
       if (!passwordComapre) {
-        return res.status(400).json({ error: "Please enter valid credentials" });
+        return res
+          .status(400)
+          .json({ error: "Please enter valid credentials" });
       }
       const data = {
         user: {
@@ -84,4 +91,17 @@ router.post(
     }
   }
 );
+
+// ROUTE 3: Get loggedin User Details using: POST "/api/auth/getuser". Login required
+router.post("/getuser", fetchuser, async (req, res) => {
+  try {
+    userId = req.user.id;
+    const user = await User.findById(req.user.id).select("-password");
+    res.send(user);
+    
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Some error occured");
+  }
+});
 module.exports = router;
