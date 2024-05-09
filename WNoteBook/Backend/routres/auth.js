@@ -54,38 +54,34 @@ router.post(
   [
     body("email", "Ender a valid email").isEmail(),
     body("password", "Password cannot be blank").exists(),
-  ],async (req,res)=>{
-    const errors=validationResult(req);
-    if(!errors.isEmpty()){
-      return res.status(400).json({errors:errors.array()});
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
 
-
-    const {email,password}=req.body;
-    try{
-      let user= await User.findOne({email});
-     if(!user){
-       return res.status(400).json({error:"Please enter valid credentials"});
-     }
-     const passwordComapre=await bcrypt.compare(password,user.password);
-      if(!passwordComapre){
-        return res.status(400).json({error:"Please enter valid credentials"});
+    const { email, password } = req.body;
+    try {
+      let user = await User.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ error: "Please enter valid credentials" });
       }
-      const data={
-        user:{
-          id:user.id
-        }
-      
+      const passwordComapre = await bcrypt.compare(password, user.password);
+      if (!passwordComapre) {
+        return res.status(400).json({ error: "Please enter valid credentials" });
       }
-      const authToken=jwt.sign(data,JWT_SECRET);
-      res.json({authToken});
-
-    }
-
-    catch (error) {
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const authToken = jwt.sign(data, JWT_SECRET);
+      res.json({ authToken });
+    } catch (error) {
       console.log(error.message);
       res.status(500).send("Some error occured");
     }
-
-  });
+  }
+);
 module.exports = router;
