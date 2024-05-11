@@ -6,7 +6,7 @@ const NotesSchema = new Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:"user"
   },
-  titel: {
+  title: {
     type: String,
     require: true,
   },
