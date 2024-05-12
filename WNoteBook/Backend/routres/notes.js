@@ -74,7 +74,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
       { $set: newNote },
       { new: true }
     );
-    res.json({note})
+    res.json({ note });
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Some error occured");
@@ -92,7 +92,7 @@ router.delete("/deletenote/:id", fetchuser, async (req, res) => {
       return res.status(401).send("Not Allowed");
     }
     note = await Note.findByIdAndDelete(req.params.id);
-    res.json({"success":"Note has been successfully deleted",note:note})
+    res.json({ success: "Note has been successfully deleted", note: note });
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Some error occured");
