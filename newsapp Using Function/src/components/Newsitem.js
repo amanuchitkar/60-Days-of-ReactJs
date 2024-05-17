@@ -10,6 +10,7 @@ const Newsitem = (props) => {
           className="card-img-top card-deck"
           alt="Check your internet connection"
         />
+        
 
         <div className="card-body text-light bg-dark">
           <span class="badge text-bg-danger">{source}</span>
