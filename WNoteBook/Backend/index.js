@@ -7,6 +7,7 @@ app.use(express.json());
 connectToMongo();
 
 app.use("/api/auth", require("./routres/auth"));
+
 app.use("/api/notes", require("./routres/notes"));
 
 app.listen(port, () => {
