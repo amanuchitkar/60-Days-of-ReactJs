@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import NoteContext from "../context/NoteContext";
 
 const NoteItem = (props) => {
+    const{deleteNote, editNote} = useContext(NoteContext)
   const { note } = props;
   return (
     <div className="col-md-4">
-      <div className="card">
-        <div className="card-header"><h4>{note.title}</h4></div>
+      <div className="card m-2">
+        <div className="card-header d-flex align-items-center justify-content-between">
+          <h4>{note.title}</h4>
+          <div>
+
+            <i className="fa-solid fa-trash-can mx-2 " onClick={()=>{deleteNote(note._id)}}></i>
+            <i className="fa-solid fa-file-pen mx-2" onClick={()=>{editNote(note._id,note.title,note.description)}}></i>
+          </div>
+        </div>
         <div className="card-body">
           <blockquote className="blockquote mb-0">
             <p> {note.description}</p>
@@ -15,7 +24,6 @@ const NoteItem = (props) => {
           </blockquote>
         </div>
       </div>
-      <br />
     </div>
   );
 };
