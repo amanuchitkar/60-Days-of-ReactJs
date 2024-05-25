@@ -42,6 +42,18 @@ const AddNote = () => {
               onChange={onchange}
             />
           </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
+              Tag
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="tag"
+              name='tag'
+              onChange={onchange}
+            />
+          </div>
           <button type="submit" onClick={handleClick}className="btn btn-primary">
             Add Note
           </button>
