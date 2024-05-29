@@ -13,6 +13,7 @@ const AddNote = () => {
     const onchange = (e) => {
        setNote({...note,[e.target.name]:e.target.value})
     }
+    
   return (
     <div>
       <div className="container">

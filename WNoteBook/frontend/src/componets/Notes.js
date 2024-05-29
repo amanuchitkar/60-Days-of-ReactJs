@@ -13,6 +13,7 @@ useEffect(()=>{
   // eslint-disable-next-line
 },[])
 const ref=useRef(null)
+
 const updateNotes = (note)=>{
    ref.current.click()
   // return alert(note)
