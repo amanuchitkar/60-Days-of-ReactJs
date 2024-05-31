@@ -19,7 +19,6 @@ const updateNotes = (note)=>{
   // return alert(note)
 }
   
-
   return (
     <>
     <div>
@@ -49,6 +48,7 @@ const updateNotes = (note)=>{
     </div>
   </div>
 </div>
+
     </div>
     <div className="row my-3">
       <h2 className="m-2">Your Notes</h2>
