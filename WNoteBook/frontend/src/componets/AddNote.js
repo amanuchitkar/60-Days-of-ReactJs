@@ -16,6 +16,7 @@ const AddNote = () => {
     }
     
   return (
+    
     <div>
       <div className="container">
         <h2>Add a Notes</h2>
