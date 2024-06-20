@@ -18,7 +18,6 @@ const updateNotes = (note)=>{
    ref.current.click()
   // return alert(note)
 }
-  
   return (
     <>
     <div>
