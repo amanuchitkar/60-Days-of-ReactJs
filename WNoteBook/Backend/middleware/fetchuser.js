@@ -9,7 +9,7 @@ const fetchuser = async (req, res, next) => {
   try {
     const data = jwt.verify(token, JWT_SECRET);
     req.user = data.user;
-    
+
 
     next();
   } catch (error) {
